@@ -5,9 +5,13 @@
             <a class="navbar-brand" href="/ads">Adlister</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/login">Login</a></li>
-            <li><a href="/logout">Logout</a></li>
+            <li><a href="${pageContext.request.contextPath}/login">Login</a></li>
+            <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
         </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
     </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+    <!-- /.container-fluid -->
 </nav>
