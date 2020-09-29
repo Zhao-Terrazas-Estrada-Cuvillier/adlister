@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -16,7 +17,7 @@ public class RegisterServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -24,9 +25,9 @@ public class RegisterServlet extends HttpServlet {
 
         // validate input
         boolean inputHasErrors = username.isEmpty()
-            || email.isEmpty()
-            || password.isEmpty()
-            || (! password.equals(passwordConfirmation));
+                || email.isEmpty()
+                || password.isEmpty()
+                || (!password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
             response.sendRedirect("/register");
@@ -35,7 +36,22 @@ public class RegisterServlet extends HttpServlet {
 
         // create and save a new user
         User user = new User(username, email, password);
-        DaoFactory.getUsersDao().insert(user);
-        response.sendRedirect("/login");
+        try {
+            DaoFactory.getUsersDao().insert(user);
+            response.sendRedirect("/login");
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            SQLException se = (SQLException) e.getCause();
+            System.out.println(se.getSQLState());
+            switch (se.getSQLState()) {
+                case "23000":
+                    request.setAttribute("error", "That username already exists! Please pick another one.");
+                    break;
+                default:
+                    request.setAttribute("error", "Invalid Login!");
+                    break;
+            }
+            request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+        }
     }
 }
