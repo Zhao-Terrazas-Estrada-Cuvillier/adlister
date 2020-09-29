@@ -5,6 +5,9 @@ import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 
+
+//This Dao class provides CRUD operations for the table users in the database.
+
 public class MySQLUsersDao implements Users {
     private Connection connection;
 
