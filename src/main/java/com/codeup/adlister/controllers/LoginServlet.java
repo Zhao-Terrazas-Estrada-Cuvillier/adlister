@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +25,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String hash = BCrypt.hashpw(password, BCrypt.gensalt());
         User user = DaoFactory.getUsersDao().findByUsername(username);
 
         if (user == null) {
@@ -31,10 +33,11 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
-        boolean validAttempt = Password.check(password, user.getPassword());
+        boolean passwordsMatch = BCrypt.checkpw("password", hash);
 
-        if (validAttempt) {
+        if (passwordsMatch) {
             request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("userID", user.getId());
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/login");
