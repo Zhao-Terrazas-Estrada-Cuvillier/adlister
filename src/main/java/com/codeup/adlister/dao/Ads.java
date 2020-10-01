@@ -10,9 +10,13 @@ public interface Ads {
     // insert a new ad and return the new ad's id
     void insert(Ad ad);
 
-    // get a specific ad by ad_id
+    // grabs ads my it's ID
     Ad getAdByID(long ad_id);
 
+    //updates an ad in the database
+    void updateAd(Ad ad);
+
+    //remove an ad from the database
     void deleteAd(Ad ad);
 
 }

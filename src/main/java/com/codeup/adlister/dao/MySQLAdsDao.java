@@ -59,17 +59,32 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    //This method grabs
     @Override
     public Ad getAdByID(long ad_id) {
         PreparedStatement stmt;
         try {
             stmt = connection.prepareStatement("SELECT * FROM ads WHERE id = ? LIMIT 1");
-            stmt.setLong(1,ad_id);
+            stmt.setLong(1, ad_id);
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs).get(0);
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Ad not found!");
             throw new RuntimeException("Error retrieving all user ads.", e);
+        }
+    }
+
+    @Override
+    public void updateAd(Ad ad){
+        PreparedStatement stmt;
+        try{
+            stmt = connection.prepareStatement("UPDATE ads SET title = ?, description = ? WHERE id = ?");
+            stmt.setString(1, ad.getTitle());
+            stmt.setString(2, ad.getDescription());
+            stmt.setLong(3, ad.getId());
+            stmt.executeQuery();
+        }catch (SQLException e){
+            throw new RuntimeException("Error updating your ad");
         }
     }
 
@@ -78,7 +93,7 @@ public class MySQLAdsDao implements Ads {
         PreparedStatement stmt;
         try {
             stmt = connection.prepareStatement("DELETE FROM ads WHERE id = ?");
-            stmt.setLong(1,ad.getId());
+            stmt.setLong(1, ad.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error deleting ad.", e);
@@ -102,14 +117,5 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
 
-    //The function deletes ads from the database
-//    public void  deleteAd(Long id) {
-//        try {
-//            PreparedStatement deleteStmt = connection.prepareStatement("DELETE FROM ads WHERE id = ?");
-//            deleteStmt.setLong(1, id);
-//            deleteStmt.executeUpdate();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+
 }
