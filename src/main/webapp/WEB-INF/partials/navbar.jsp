@@ -4,11 +4,29 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header ">
             <a class="navbar-brand" href="/">Adlister</a>
+            <c:choose>
+                <c:when test="${user == null}"></c:when>
+                <c:otherwise>
+                    <div class="searchbar">
+                        <form class="form-inline" method="get" action="/ads">
+                            <input type="text" name="ads" class="form-control" placeholder="Looking for an Ad?">
+                            <button type="submit" name="ads" class="btn btn-primary">Search</button>
+                        </form>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+            <div class="searchbar">
+                <form class="form-inline" method="get" action="/ads/search">
+                    <input type="text" name="ads" class="form-control" placeholder="Looking for an Ad?">
+                    <button type="submit" name="ads" class="btn btn-primary">Search</button>
+                </form>
+            </div>
         </div>
         <ul class="nav navbar-nav navbar-right d-flex">
             <c:choose>
                 <c:when test="${user == null}">
                     <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
                 </c:when>
                 <c:otherwise>
                     <nav class="navbar navbar-light">
