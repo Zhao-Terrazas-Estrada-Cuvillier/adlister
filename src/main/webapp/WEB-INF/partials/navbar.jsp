@@ -67,6 +67,7 @@
         <c:otherwise>
             <a class="nav-link active" href="/profile">Profile</a>
             <a class="nav-link" href="/profile/edit">Edit Profile</a>
+            <a class="nav-link" href="/ads">Ads</a>
             <a class="nav-link" href="/logout">Logout</a>
         </c:otherwise>
     </c:choose>
