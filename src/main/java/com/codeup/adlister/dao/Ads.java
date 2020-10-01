@@ -11,5 +11,6 @@ public interface Ads {
     Long insert(Ad ad);
     // get a specific ad by title
     List<Ad> getAdByTitle(String title);
-
+    // get a specific ad by ID
+    Ad getAdById(long ad_id);
 }

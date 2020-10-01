@@ -58,14 +58,29 @@ public class MySQLAdsDao implements Ads {
         PreparedStatement stmt = null;
         String searchWithWildcard = "%" + title + "%";
         try{
-            stmt = connection.prepareStatement("SELECT * FROM ads WHERE title LIKE ?");
-            stmt.setString(1, searchWithWildcard);
+            stmt = connection.prepareStatement("SELECT  * FROM ads WHERE title LIKE CONCAT('%',?,'%')");
+            stmt.setString(1, title);
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
         } catch(SQLException e){
-            throw new RuntimeException("Error in searching for ads");
+            throw new RuntimeException("Error in searching for ads",e);
         }
     }
+
+    @Override
+    public Ad getAdById(long ad_id) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads WHERE id = ? LIMIT 1");
+            stmt.setLong(1,ad_id);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs).get(0);
+        } catch (SQLException e){
+            System.out.println("Ad not found!");
+            throw new RuntimeException("Error retrieving all user ads.", e);
+        }
+    }
+
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(

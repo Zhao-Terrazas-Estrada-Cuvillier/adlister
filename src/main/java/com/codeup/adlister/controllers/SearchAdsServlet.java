@@ -10,13 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "controllers.SearchAdsServlet", urlPatterns = "/ads/search")
 public class SearchAdsServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchTitle = request.getParameter("search");
-        request.setAttribute("ads",DaoFactory.getAdsDao().getAdByTitle(searchTitle));
-        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request,response);
+        List<Ad> searchAds = DaoFactory.getAdsDao().getAdByTitle(searchTitle);
+        for(Ad ad:searchAds){
+            System.out.println(ad.getTitle());
+        }
+        request.setAttribute("ads", searchAds);
+        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request,response);
     }
-
 }
