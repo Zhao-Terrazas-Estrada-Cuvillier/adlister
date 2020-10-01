@@ -3,7 +3,7 @@
 <html>
 <head>
     <jsp:include page="partials/head.jsp">
-        <jsp:param name="title" value="Register For Our Site!"/>
+        <jsp:param name="title" value="Edit Profile information"/>
     </jsp:include>
 </head>
 <body>
@@ -13,7 +13,7 @@
 </c:if>
 <div class="container">
     <h1>Please fill in your information.</h1>
-    <form action="/register" method="post">
+    <form action="/profile/edit" method="post">
         <div class="form-group">
             <label for="username">Username</label>
             <input id="username" name="username" class="form-control" type="text">
