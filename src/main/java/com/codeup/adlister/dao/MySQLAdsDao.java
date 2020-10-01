@@ -88,7 +88,7 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-    //This method grabs
+    //This method grabs an ad by it's ID
     @Override
     public Ad getAdByID(long ad_id) {
         PreparedStatement stmt;
