@@ -9,7 +9,7 @@
     </jsp:include>
 <style>
     .jumbotron{
-    background-color:#60628D;
+    background-color:#645A97;
     text-align:center;
     }
 </style>
