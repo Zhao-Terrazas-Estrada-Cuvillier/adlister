@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <jsp:include page="/WEB-INF/partials/bg.jsp" />
     <jsp:include page="partials/head.jsp">
         <jsp:param name="title" value="Edit Profile information"/>
     </jsp:include>
