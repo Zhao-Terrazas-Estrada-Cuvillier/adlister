@@ -20,7 +20,7 @@
             display:block;
             width: 100%;
             margin: 0 auto;
-            background-color: rgba(192,192,192,0.3);
+            background-color: rgba(192,192,192,0.6);
         }
     </style>
     <title>Background</title>

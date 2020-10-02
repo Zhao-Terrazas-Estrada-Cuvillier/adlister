@@ -16,11 +16,11 @@ import java.util.List;
 public class SearchAdsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchTitle = request.getParameter("search");
-        List<Ad> searchAds = DaoFactory.getAdsDao().getAdByTitle(searchTitle);
-        for(Ad ad:searchAds){
-            System.out.println(ad.getTitle());
-        }
-        request.setAttribute("ads", searchAds);
-        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request,response);
+//        List<Ad> searchAds = DaoFactory.getAdsDao().getAdByTitle(searchTitle);
+//        for(Ad ad:searchAds){
+//            System.out.println(ad.getTitle());
+//        }
+//        request.setAttribute("ads", searchAds);
+//        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request,response);
     }
 }

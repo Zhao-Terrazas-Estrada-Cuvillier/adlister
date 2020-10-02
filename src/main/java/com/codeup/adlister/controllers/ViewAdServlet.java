@@ -19,9 +19,9 @@ public class ViewAdServlet extends HttpServlet {
         String idStr = request.getParameter("id");
         long id = Long.parseLong(idStr);
 
-        Ad ad = DaoFactory.getAdsDao().getAdById(id);
+//        Ad ad = DaoFactory.getAdsDao().getAdById(id);
         List<Ad> adsList = new ArrayList<>();
-        adsList.add(ad);
+//        adsList.add(ad);
         request.setAttribute("ads", adsList);
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
     }
