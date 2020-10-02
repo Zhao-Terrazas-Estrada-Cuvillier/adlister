@@ -24,5 +24,5 @@
             </c:choose>
         </ul>
     </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+    </div>
 </nav>
