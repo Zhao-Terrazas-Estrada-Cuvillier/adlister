@@ -1,11 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<head>
 <style>
     body {
         font-family: "Lato", sans-serif;
         transition: background-color .5s;
     }
-
     .sidenav {
         height: 100%;
         width: 0;
@@ -20,7 +19,6 @@
         padding-top: 60px;
         box-shadow: 10px 10px 20px 0 #8479A1 inset, -10px -10px 20px 0 #8479A1 inset;
     }
-
     .sidenav a {
         padding: 8px 8px 8px 32px;
         text-decoration: none;
@@ -29,11 +27,9 @@
         display: block;
         transition: 0.3s;
     }
-
     .sidenav a:hover {
         color: #f1f1f1;
     }
-
     .sidenav .closebtn {
         position: absolute;
         top: 0;
@@ -41,20 +37,18 @@
         font-size: 36px;
         margin-left: 50px;
     }
-
     #main {
         transition: margin-left .5s;
         padding: 16px;
     }
-
     @media screen and (max-height: 450px) {
         .sidenav {padding-top: 15px;}
         .sidenav a {font-size: 18px;}
     }
 </style>
+    <title>nav</title>
+</head>
 <body>
-<div id="main">
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src="https://img.icons8.com/pastel-glyph/64/000000/hamburger.png"/> </span></div>
 
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -72,13 +66,16 @@
         </c:otherwise>
     </c:choose>
 </div>
+<div id="main">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src="https://img.icons8.com/pastel-glyph/64/000000/hamburger.png" /></span>
+</div>
+
 <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
         document.getElementById("main").style.marginLeft = "250px";
         document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
     }
-
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
         document.getElementById("main").style.marginLeft= "0";
@@ -86,12 +83,4 @@
     }
 </script>
 </body>
-
-
-
-<%--    </div><!-- /.navbar-collapse -->--%>
-<%--    </div><!-- /.container-fluid -->--%>
-
-
-<%--Script for Transition--%>
 

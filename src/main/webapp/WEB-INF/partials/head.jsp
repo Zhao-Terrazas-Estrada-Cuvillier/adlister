@@ -3,8 +3,6 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <div class="pull-right"><div class="headerbar-header"></div>
-
-    <a class="navbar-brand" href="/">Adlister</a>
     <c:choose>
         <c:when test="${user == null}"></c:when>
         <c:otherwise>
@@ -13,6 +11,7 @@
                     <input type="text" name="search" class="form-control" placeholder="Looking for an Ad?">
                     <button type="submit" class="btn btn-primary">Search</button>
                 </form>
+                </div>
             </div>
         </c:otherwise>
     </c:choose>
