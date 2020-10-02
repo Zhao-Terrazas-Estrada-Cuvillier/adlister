@@ -7,9 +7,31 @@
     </jsp:include>
 </head>
 <body>
+
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+
     <div class="container">
-        <h1>Welcome to the Adlister!</h1>
+
+        <div class="jumbotron mx-auto d-inline text-center" >
+        <p class="h1 py-1 display-4">Welcome to the Adlister!</p>
+        </div>
+
+        <div class="p-3">
+        <a class="btn btn-primary" href="/login">LOG IN</a>
+        </div>
+
+        <br>
+        <div class="p-3">
+        <a class="btn btn-primary" href="/profile">GO TO PROFILE</a>
+        </div>
+
+        <br>
+
+        <div class="p-3">
+        <a class="btn btn-primary" href="/register">CREATE AN ACCOUNT</a>
+        </div>
+
     </div>
+
 </body>
 </html>

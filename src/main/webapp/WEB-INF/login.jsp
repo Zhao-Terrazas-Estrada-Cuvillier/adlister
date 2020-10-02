@@ -8,6 +8,11 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container">
+
+        <div class="p-3">
+            <a class="btn btn-primary" href="/index.jsp">HOME</a>
+        </div>
+
         <h1>Please Log In</h1>
         <form action="/login" method="POST">
             <div class="form-group">

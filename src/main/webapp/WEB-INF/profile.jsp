@@ -12,5 +12,9 @@
         <h1>Welcome, ${sessionScope.user.username}!</h1>
     </div>
 
+    <div class="p-3">
+        <a class="btn btn-primary" href="/index.jsp">HOME</a>
+    </div>
+
 </body>
 </html>
