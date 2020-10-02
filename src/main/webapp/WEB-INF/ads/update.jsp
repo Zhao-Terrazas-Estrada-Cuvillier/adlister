@@ -9,16 +9,17 @@
 <jsp:include page="../partials/navbar.jsp"/>
 <div class="container">
     <h1>Update an existing Ad</h1>
-    <form action="${pageContext.request.contextPath}/ads/update" method="post">
+    <form action="/ads/update" method="post">
         <div class="form-group">
             <label for="title">Title</label>
-            <input id="title" name="title" class="form-control" type="text">
+            <input id="title" name="title" class="form-control" type="text" value="${sessionScope.ad.title}">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" type="text"></textarea>
+            <textarea id="description" name="description" class="form-control" type="text">${sessionScope.ad.description}</textarea>
         </div>
-        <input type="submit" class="btn btn-block btn-primary">
+        <input name="ad_id" type="hidden" value=${ad.id}>
+        <button type="submit" class="btn btn-primary" formaction="${pageContext.request.contextPath}/profile" formmethod="get">Submit</button>
     </form>
 </div>
 </body>

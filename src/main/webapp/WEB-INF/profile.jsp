@@ -20,12 +20,10 @@
             <p>${ad.description}</p>
             <form action="" class="form-inline">
                 <input name="ad_id" type="hidden" value=${ad.id}>
-                <button type="submit" class="btn btn-sm btn-warning" formaction="${pageContext.request.contextPath}/profile" formmethod="post">EDIT</button>
-                <button type="submit" class="btn btn-sm btn-danger" formaction="${pageContext.request.contextPath}/ads/delete" formmethod="get">DELETE</button>
+                <button type="submit" class="btn btn-primary" formaction="${pageContext.request.contextPath}/ads/update" formmethod="get">EDIT</button>
+                <button type="submit" class="btn btn-primary" formaction="${pageContext.request.contextPath}/ads/delete" formmethod="get">DELETE</button>
             </form>
-            <p>Ad ID: ${ad.id}</p>
             <hr>
-
         </div>
     </c:forEach>
 </div>

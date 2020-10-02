@@ -37,7 +37,7 @@ public class UpdateAdServlet extends HttpServlet {
                 description_update
         );
         DaoFactory.getAdsDao().updateAd(adToInsert);
-        request.getSession().setAttribute("message","An error has occured");
+        request.getSession().setAttribute("message","An error has occurred");
         response.sendRedirect("/profile");
 
 
