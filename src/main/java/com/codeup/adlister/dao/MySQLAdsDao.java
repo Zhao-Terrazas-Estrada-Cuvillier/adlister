@@ -40,6 +40,7 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
     }
+    //Listing ads for User
     public List<Ad> allForUser(User user) {
         PreparedStatement stmt = null;
         try {
@@ -51,26 +52,7 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
     }
-
-    // The function inserts ads into the database
-
-//    @Override
-//    public void insert(Ad ad) {
-//        try {
-//            String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
-//            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-//            stmt.setLong(1, ad.getUserId());
-//            stmt.setString(2, ad.getTitle());
-//            stmt.setString(3, ad.getDescription());
-//            stmt.executeUpdate();
-//            ResultSet rs = stmt.getGeneratedKeys();
-//            rs.next();
-//            rs.getLong(1);
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error creating a new ad.", e);
-//        }
-//    }
-
+    //Inserting new ad.
     @Override
     public Long insert(Ad ad) {
         try {
@@ -102,21 +84,21 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error retrieving all user ads.", e);
         }
     }
-
+    //This method update/edit ads.
     @Override
-    public void updateAd(Ad ad){
+    public void updateAd(Ad ad) {
         PreparedStatement stmt;
-        try{
+        try {
             stmt = connection.prepareStatement("UPDATE ads SET title = ?, description = ? WHERE id = ?");
             stmt.setString(1, ad.getTitle());
             stmt.setString(2, ad.getDescription());
             stmt.setLong(3, ad.getId());
-            stmt.executeQuery();
-        }catch (SQLException e){
+            stmt.executeUpdate();
+        } catch (SQLException e) {
             throw new RuntimeException("Error updating your ad");
         }
     }
-
+    //This method deletes an ad.
     @Override
     public void deleteAd(Ad ad) {
         PreparedStatement stmt;
@@ -137,7 +119,7 @@ public class MySQLAdsDao implements Ads {
                 rs.getString("description")
         );
     }
-
+    //This method creates
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
         List<Ad> ads = new ArrayList<>();
         while (rs.next()) {

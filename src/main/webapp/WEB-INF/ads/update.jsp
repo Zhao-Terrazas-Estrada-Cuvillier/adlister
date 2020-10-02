@@ -2,7 +2,7 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Update an existing Ad" />
+        <jsp:param name="title" value="Update an existing Ad"/>
     </jsp:include>
 </head>
 <body>
@@ -16,10 +16,11 @@
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" type="text">${sessionScope.description}</textarea>
+            <textarea id="description" name="description" class="form-control"
+                      type="text">${sessionScope.description}</textarea>
         </div>
         <input name="ad_id" type="hidden" value=${ad.id}>
-        <button type="submit" class="btn btn-primary" formaction="${pageContext.request.contextPath}/profile" formmethod="get">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 </body>

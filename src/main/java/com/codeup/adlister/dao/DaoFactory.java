@@ -17,6 +17,6 @@ public class DaoFactory {
             usersDao = new MySQLUsersDao(config);
         }
         return usersDao;
-        //This is a test note
+
     }
 }

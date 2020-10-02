@@ -20,8 +20,12 @@
             <p>${ad.description}</p>
             <form action="" class="form-inline">
                 <input name="ad_id" type="hidden" value=${ad.id}>
-                <button type="submit" class="btn btn-primary" formaction="${pageContext.request.contextPath}/ads/update" formmethod="get">EDIT</button>
-                <button type="submit" class="btn btn-primary" formaction="${pageContext.request.contextPath}/ads/delete" formmethod="get">DELETE</button>
+                <button type="submit" class="btn btn-primary" formaction="${pageContext.request.contextPath}/ads/update"
+                        formmethod="get">EDIT
+                </button>
+                <button type="submit" class="btn btn-primary" formaction="${pageContext.request.contextPath}/ads/delete"
+                        formmethod="get">DELETE
+                </button>
             </form>
             <hr>
         </div>

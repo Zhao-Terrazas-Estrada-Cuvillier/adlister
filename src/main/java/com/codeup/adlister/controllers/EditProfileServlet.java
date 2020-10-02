@@ -31,7 +31,7 @@ public class EditProfileServlet extends HttpServlet {
         boolean inputHasErrors = username_edit.isEmpty()
                 || email_edit.isEmpty()
                 || password_edit.isEmpty();
-        boolean password_notmatch= !password_edit.equals(passwordConfirmation_edit);
+        boolean password_notmatch = !password_edit.equals(passwordConfirmation_edit);
 
         if (inputHasErrors) {
             request.setAttribute("error", "Nothing should be empty");
@@ -52,7 +52,7 @@ public class EditProfileServlet extends HttpServlet {
         if (!user_edit.equals(request.getSession().getAttribute("user"))) {
             try {
                 DaoFactory.getUsersDao().editUsername(user_edit);
-                request.getSession().setAttribute("user",user_edit);
+                request.getSession().setAttribute("user", user_edit);
                 response.sendRedirect("/profile");
             } catch (RuntimeException e) {
                 e.printStackTrace();
