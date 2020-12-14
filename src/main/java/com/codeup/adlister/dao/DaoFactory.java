@@ -14,6 +14,7 @@ public class DaoFactory {
 
     public static Users getUsersDao() {
         if (usersDao == null) {
+//            using polymorphism
             usersDao = new MySQLUsersDao(config);
         }
         return usersDao;

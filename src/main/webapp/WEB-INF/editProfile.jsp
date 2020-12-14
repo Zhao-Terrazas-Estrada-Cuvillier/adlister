@@ -9,10 +9,10 @@
 </head>
 <body>
 <jsp:include page="partials/navbar.jsp"/>
-<c:if test="${not empty error}">
-    <p>${error}</p>
-</c:if>
 <div class="container">
+    <c:if test="${not empty error}">
+        <p>${error}</p>
+    </c:if>
     <h1>Please fill in your information.</h1>
     <form action="/profile/edit" method="post">
         <div class="form-group">

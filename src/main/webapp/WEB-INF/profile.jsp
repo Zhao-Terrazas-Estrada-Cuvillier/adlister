@@ -11,6 +11,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <div class="container">
     <h1>Welcome, <c:out value="${sessionScope.user.username}"/>!</h1>
+    <h4><c:out value="${sessionScope.user.email}"/></h4>
 </div>
 <div class="container">
     <hr>

@@ -7,7 +7,7 @@ import com.mysql.cj.jdbc.Driver;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+//Dao: data access object. interface implementation
 public class MySQLUsersDao implements Users {
     private Connection connection;
 
